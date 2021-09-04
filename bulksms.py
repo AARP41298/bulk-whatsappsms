@@ -45,9 +45,9 @@ def send_whatsapp_msg(phone_no, text):
 
     try:
         element_presence(
-            By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]', 30)
+            By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[1]/div/div[2]', 30)
         txt_box = driver.find_element(
-            By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
+            By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[1]/div/div[2]')
         global no_of_message
         for x in range(no_of_message):
             txt_box.send_keys(text)
