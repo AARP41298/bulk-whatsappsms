@@ -41,7 +41,7 @@ def send_whatsapp_msg(phone_no, text):
     driver.get(
         "https://web.whatsapp.com/send?phone={}&source=&data=#".format(phone_no))
     try:
-        driver.switch_to_alert().accept()
+        driver.switch_to.alert
     except Exception as e:
         pass
 
