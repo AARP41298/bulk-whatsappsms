@@ -6,10 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 import socket
+# saltos de linea para WhatsApp
+br = (Keys.SHIFT)+(Keys.ENTER)+(Keys.SHIFT)
 # mensaje que quieres enviar
 message_text = 'Este mensaje es *Demo*  y es parte de un tutorial: https://youtu.be/9UbcI0el-w0'
 
-no_of_message = 2  # no. de tiempo desea que el mensaje sea enviado
+no_of_message = 1  # no. de tiempo desea que el mensaje sea enviado
 # lista de números de teléfono puede ser de cualquier longitud
 # Puedes agregar a la lista mas de un numero ejem  [573024508559,num2,num3,num4]
 moblie_no_list = [573024508559]
@@ -44,6 +46,7 @@ def send_whatsapp_msg(phone_no, text):
         pass
 
     try:
+        #actualizar XPATH en nuevas versiones de WhatsApp Web
         element_presence(
             By.XPATH, '//*[@id="main"]/footer/div[1]/div[2]/div/div[1]/div/div[2]', 30)
         txt_box = driver.find_element(
@@ -51,6 +54,9 @@ def send_whatsapp_msg(phone_no, text):
         global no_of_message
         for x in range(no_of_message):
             txt_box.send_keys(text)
+            #esperar a que cargue la miniatura del link
+            sleep(2)
+            #el enter para enviar
             txt_box.send_keys("\n")
 
     except Exception as e:
